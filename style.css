@@ -1513,10 +1513,6 @@ body {
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
-    }
-
-    .mobile-menu-btn {
-        display: block;
         position: relative;
         left: -159px;
         top: -20px;
