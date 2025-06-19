@@ -30,18 +30,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Add scroll effect to header
-    window.addEventListener('scroll', function () {
-        const header = document.querySelector('.header');
-        if (header) {
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(0, 0, 0, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = '#000';
-                header.style.backdropFilter = 'none';
-            }
-        }
-    });
+    // window.addEventListener('scroll', function () {
+    //     const header = document.querySelector('.header');
+    //     if (header) {
+    //         if (window.scrollY > 100) {
+    //             header.style.background = 'rgba(0, 0, 0, 0.95)';
+    //             header.style.backdropFilter = 'blur(10px)';
+    //         } else {
+    //             header.style.background = '#000';
+    //             header.style.backdropFilter = 'none';
+    //         }
+    //     }
+    // });
 
     // Animate elements on scroll
     const observerOptions = {
@@ -280,3 +280,93 @@ function searchContent(query) {
 
     return results;
 }
+document.addEventListener("DOMContentLoaded", () => {
+    // Theme Switcher Functionality
+    const themeToggleBtn = document.getElementById("themeToggleBtn")
+    const themeOptions = document.getElementById("themeOptions")
+    const themeButtons = document.querySelectorAll(".theme-option")
+
+    // Load saved theme or default to orange
+    const savedTheme = localStorage.getItem("selectedTheme") || "orange"
+    document.documentElement.setAttribute("data-theme", savedTheme)
+
+    // Update active theme button
+    themeButtons.forEach((btn) => {
+        btn.classList.remove("active")
+        if (btn.getAttribute("data-theme") === savedTheme) {
+            btn.classList.add("active")
+        }
+    })
+
+    // Toggle theme options visibility
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener("click", (e) => {
+            e.stopPropagation()
+            themeOptions.classList.toggle("active")
+        })
+    }
+
+    // Close theme options when clicking outside
+    document.addEventListener("click", (event) => {
+        if (themeOptions && !themeOptions.contains(event.target) && !themeToggleBtn.contains(event.target)) {
+            themeOptions.classList.remove("active")
+        }
+    })
+
+    // Theme selection
+    themeButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const selectedTheme = this.getAttribute("data-theme")
+
+            // Update document theme
+            document.documentElement.setAttribute("data-theme", selectedTheme)
+
+            // Save to localStorage
+            localStorage.setItem("selectedTheme", selectedTheme)
+
+            // Update active button
+            themeButtons.forEach((btn) => btn.classList.remove("active"))
+            this.classList.add("active")
+
+            // Close theme options
+            themeOptions.classList.remove("active")
+
+            // Show notification
+            showThemeNotification(selectedTheme)
+        })
+    })
+
+    // Show theme change notification
+    function showThemeNotification(theme) {
+        const themeNames = {
+            orange: "Orange",
+            blue: "Blue",
+            green: "Green",
+            purple: "Purple",
+            red: "Red",
+        }
+
+        showNotification(`Theme changed to ${themeNames[theme]}!`, "success")
+    }
+
+    // Notification handling
+    const notificationContainer = document.getElementById("notification-container")
+
+    function showNotification(message, type = "info") {
+        const notification = document.createElement("div")
+        notification.classList.add("notification", type)
+        notification.textContent = message
+
+        notificationContainer.appendChild(notification)
+
+        // Remove the notification after a few seconds
+        setTimeout(() => {
+            notification.remove()
+        }, 3000)
+    }
+
+    // Example usage (you can trigger notifications from other parts of your code)
+    // showNotification('Welcome to the page!', 'success');
+    // showNotification('An error occurred.', 'error');
+    // showNotification('Information update.', 'info');
+})
