@@ -344,6 +344,7 @@ document.addEventListener("DOMContentLoaded", () => {
             green: "Green",
             purple: "Purple",
             red: "Red",
+            black: "Black",
         }
 
         showNotification(`Theme changed to ${themeNames[theme]}!`, "success")
@@ -370,3 +371,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // showNotification('An error occurred.', 'error');
     // showNotification('Information update.', 'info');
 })
+

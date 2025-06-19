@@ -1203,6 +1203,81 @@ body {
     --hover-shadow: rgba(220, 38, 38, 0.3);
 }
 
+/* Black Theme */
+[data-theme="black"] {
+    --primary-color: #1f2937;
+    --secondary-color: #374151;
+    --light-bg: #f9fafb;
+    --shadow-color: rgba(31, 41, 55, 0.2);
+    --hover-shadow: rgba(31, 41, 55, 0.3);
+}
+
+/* Special styling for black theme to ensure good contrast */
+[data-theme="black"] .header {
+    background: #fff;
+    border-bottom: 2px solid #1f2937;
+}
+
+[data-theme="black"] .nav-menu a {
+    color: #333;
+}
+
+[data-theme="black"] .nav-menu a:hover,
+[data-theme="black"] .nav-menu a.active {
+    background: linear-gradient(135deg, #1f2937, #374151);
+    color: #fff;
+}
+
+[data-theme="black"] .brand-name {
+    color: #1f2937;
+}
+
+[data-theme="black"] .hero {
+    background: linear-gradient(135deg, #fff, #f9fafb);
+}
+
+[data-theme="black"] .hero-left h1 {
+    color: #1f2937;
+}
+
+[data-theme="black"] .highlight {
+    color: #1f2937;
+}
+
+[data-theme="black"] .section-title {
+    color: #1f2937;
+}
+
+[data-theme="black"] .rc-logo {
+    color: #1f2937;
+}
+
+[data-theme="black"] .rank {
+    color: #1f2937;
+    background: #fff;
+}
+
+[data-theme="black"] .footer {
+    background: #1f2937;
+    border-top: 4px solid #374151;
+}
+
+[data-theme="black"] .footer-section h4 {
+    color: #9ca3af;
+}
+
+[data-theme="black"] .footer-section a:hover {
+    color: #d1d5db;
+}
+
+[data-theme="black"] .footer-logo span {
+    color: #9ca3af;
+}
+
+[data-theme="black"] .social-links a:hover {
+    background: linear-gradient(135deg, #374151, #4b5563);
+}
+
 /* Update existing styles to use CSS variables */
 .header {
     border-bottom: 2px solid var(--primary-color);
@@ -1511,6 +1586,13 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .theme-switcher {
+        position: fixed;
+        top: 33px;
+        right: 19px;
+        z-index: 1001;
+    }
+
     .mobile-menu-btn {
         display: block;
         position: relative;
@@ -1520,7 +1602,21 @@ body {
 
     .logo {
         position: relative;
-        left: 28.9px
+        left: 28.9px;
+    }
+
+    .brand-name {
+        display: none;
+    }
+
+    .login-btn {
+        position: relative;
+        left: -73.9px;
+        top: 16px;
+    }
+
+    .mobile-menu-btn {
+        display: block;
     }
 
     .nav-menu {
@@ -1533,19 +1629,6 @@ body {
         box-shadow: 0 4px 15px rgba(255, 102, 0, 0.2);
         border-top: 2px solid #ff6600;
     }
-
-    .theme-switcher {
-        position: fixed;
-        top: 33px;
-        right: 19px;
-        z-index: 1001;
-    }
-
-    .brand-name {
-        display: none;
-    }
-
-
 
     .nav-menu.active {
         display: block;
@@ -1560,12 +1643,6 @@ body {
     .banner-content {
         flex-direction: column;
         text-align: center;
-    }
-
-    .login-btn {
-        position: relative;
-        left: -73.9px;
-        top: 16px;
     }
 
     .students-grid {
@@ -1633,7 +1710,7 @@ body {
         gap: 2rem;
     }
 
-    */ .page-header h1 {
+    .page-header h1 {
         font-size: 2rem;
     }
 }
