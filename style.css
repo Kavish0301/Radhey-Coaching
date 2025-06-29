@@ -304,10 +304,41 @@ body {
     box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
 }
 
+.cta {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
 .cta-btn:hover {
     background: linear-gradient(135deg, #ff8533, #ffaa66);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+}
+
+.teacher-img {
+    overflow: hidden;
+}
+
+.teacher-img img {
+    width: 205px;
+    height: auto;
+    position: relative;
+    left: -29.6px;
+    top: 3px;
+}
+
+.student-img img {
+    width: 317.5px;
+    height: auto;
+    position: relative;
+    left: -92.2px;
+    top: -52px;
+}
+
+.student-img {
+    overflow: hidden;
 }
 
 .secondary-btn {
